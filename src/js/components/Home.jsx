@@ -8,7 +8,8 @@ export const Home = () => {
 	const [list, setList] = useState([]);
 
 	function addTask() {
-		fetch('https://playground.4geeks.com/todo/users/judith', {
+		console.log(task);
+		fetch('https://playground.4geeks.com/todo/todos/judith', {
 			method: "POST",
 			body: JSON.stringify({ label: task, done: false }),
 			headers: {
@@ -48,9 +49,11 @@ export const Home = () => {
 			<h1 className="mb-4" style={{ fontWeight: 100 }}>To-Do List</h1>
 
 			<div className="w-100" style={{ maxWidth: "500px" }}>
-				<input className="form-control form-control-lg mb-3 shadow-sm" onChange={(event) => setTask(event.target.value)}
+				<input className="form-control form-control-lg mb-3 shadow-sm" onChange={(e) => setTask(e.target.value)}
 					onKeyDown={(e) => {
 						if (e.key === 'Enter') {
+							
+							
 							addTask();
 							setTask("");
 						}
